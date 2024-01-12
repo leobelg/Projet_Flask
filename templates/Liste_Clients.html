@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Projet Flask</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('accueil') }}" method="post">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('formulaire_view') }}" method="post">Ajout Client</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('get_clients') }}" method="post">Liste Clients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('form_news') }}" method="post">Recherche entreprise</a>
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('upload_view') }}" method="post">Importer fichier</a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('stock_form') }}" method="post">Stock Formulaire</a>
+            </li>        
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('img_form') }}" method="post">Prédiction Formulaire</a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('predict_draw_view') }}" method="post">Dessin Prédiction</a>
+            </li> 
+        </ul>
+    </nav>
+    
+    <div class="container p-3 my-3 border">
+        <h3>Tous les Clients</h3>
+        <ul class="list-group" id="tous_les_clients">
+            {% for client in tous_les_clients %}
+                <li class="list-group-item">
+                    <span style="color: blue;"><strong>Nom :</strong></span> {{ client['nom'] }}
+                    <span style="color: blue;"><strong>Prenom :</strong></span> {{ client['prenom'] }}
+                    <span style="color: blue;"><strong>Username :</strong></span> {{ client['username'] }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
